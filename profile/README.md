@@ -28,15 +28,9 @@ We're a small studio based in France building two things we love: **games** and 
 
 ## Premium MCP Servers
 
-Sponsor us to unlock our full MCP collection — battle-tested tools we use every day:
+Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** covering Discord, Jira, version control, code review, and more — with new ones being built every day. These are the same battle-tested tools we use in our own workflow.
 
-| MCP Server | What It Does |
-|------------|-------------|
-| 🤖 **Discord MCP** | Full Discord server management from Claude |
-| 🎯 **Jira MCP** | 47+ tools for issues, boards, sprints, and users |
-| 🔀 **Plastic SCM MCP** | Version control integration for Unity teams |
-| 🔍 **CS Review MCP** | C# code review and visual diff viewer |
-| 💼 **LinkedIn MCP** | LinkedIn prospecting automation |
+Sponsor us to unlock the full collection and get access to every new MCP as it ships.
 
 > **Unity MCP is and will always be free and open source.**
 
