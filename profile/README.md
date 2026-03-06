@@ -2,7 +2,7 @@
 
 # AnkleBreaker Studio
 
-**Game studio & MCP toolsmiths** — we build AI-powered developer tools and immersive games.
+**Game studio & MCP toolsmiths** — we build AI-powered tools and immersive games.
 
 [![Website](https://img.shields.io/badge/Website-anklebreaker--studio.com-blue?style=flat-square&logo=google-chrome&logoColor=white)](https://www.anklebreaker-studio.com)
 [![Twitter](https://img.shields.io/badge/Twitter-@anklebreaker__eu-1DA1F2?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/anklebreaker_eu)
@@ -15,7 +15,7 @@
 
 ## What We Do
 
-We're a small studio based in France building two things we love: **games** and **developer tools**. Our MCP (Model Context Protocol) servers let AI assistants like Claude work directly inside your favorite dev tools — Unity, Discord, Jira, Plastic SCM, and more.
+We're a small studio based in France building two things we love: **games** and **AI-powered tools**. Our MCP (Model Context Protocol) servers let AI assistants like Claude work directly inside the software you use every day — whether you're a developer, a video editor, a marketer, or anything in between.
 
 ## Open Source
 
@@ -28,9 +28,11 @@ We're a small studio based in France building two things we love: **games** and 
 
 ## Premium MCP Servers
 
-Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** covering Discord, Jira, version control, code review, and more — with new ones being built every day. These are the same battle-tested tools we use in our own workflow.
+Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** — and they're not just for developers. We build MCPs for **every use case**: from Discord and Jira to LinkedIn automation, video editing workflows in Premiere Pro, and more. If there's software you use daily, we're probably building an MCP for it.
 
-Sponsor us to unlock the full collection and get access to every new MCP as it ships.
+New MCPs ship regularly, and sponsors get instant access to the full collection as it grows.
+
+> **Have an idea for an MCP?** [Join our Discord](https://discord.gg/jrgNeUn6Ft) and tell us what tool you want AI to control next — we love building what the community asks for!
 
 > **Unity MCP is and will always be free and open source.**
 
