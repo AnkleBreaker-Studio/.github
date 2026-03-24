@@ -59,7 +59,6 @@ Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** av
 | **Git & GitHub MCP** | Full Git and GitHub capabilities — repos, PRs, branches, issues, actions, releases, code search |
 | **LinkedIn MCP** | LinkedIn prospecting automation — search, outreach, campaigns, messaging, connections |
 | **Plastic SCM MCP** | Plastic SCM / Unity Version Control — branches, merges, shelves, workspaces, code reviews, locks |
-| **Cowork Mesh MCP** | Distributed MCP connecting multiple Claude Desktop/Cowork instances — task orchestration across machines |
 | **Premium Plugin Bundle** | Curated collection of premium MCP plugins packaged for Claude Cowork |
 | 🔜 **More coming…** | New MCPs ship regularly — sponsors get instant access as the collection grows |
 
