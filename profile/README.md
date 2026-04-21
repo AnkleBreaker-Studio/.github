@@ -88,11 +88,8 @@ Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** av
 | **Jira MCP** | 47+ tools — issues, sprints, boards, transitions, bulk ops, comments, worklogs, and full project management |
 | **Git & GitHub MCP** | Full Git and GitHub capabilities — repos, PRs, branches, issues, actions, releases, code search |
 | **Blender MCP** | Full Blender integration — meshes, materials, modifiers, animation, rendering, import/export |
-| **LinkedIn MCP** | LinkedIn prospecting automation — search, outreach, campaigns, messaging, connections |
 | **Plastic SCM MCP** | Plastic SCM / Unity Version Control — branches, merges, shelves, workspaces, code reviews, locks |
 | **Playwright MCP** | Browser automation and QA testing — navigate, click, fill forms, screenshot, assert, multi-tab |
-| **Cowork Mesh** | Distributed multi-agent MCP — connect multiple Claude instances into a coordinated agent mesh |
-| **Premium Plugin Bundle** | Curated collection of premium MCP plugins packaged for Claude Cowork |
 | 🔜 **More coming…** | New MCPs ship regularly — sponsors get instant access as the collection grows |
 
 > **Have an idea for an MCP?** [Join our Discord](https://discord.gg/jrgNeUn6Ft) and tell us what tool you want AI to control next!
