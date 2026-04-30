@@ -27,9 +27,14 @@ on:
           - tier_changed
           - pending_cancellation
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   manage-sponsor:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Handle sponsor event
         uses: actions/github-script@v7
