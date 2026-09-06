@@ -27,10 +27,13 @@ on:
           - tier_changed
           - pending_cancellation
 
-
+# One run per sponsor, and never cancel an in-flight grant.
+# (The old shared group meant two sponsors signing up together
+#  could cancel each other's run and silently lose access.)
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: sponsor-manager-${{ github.event.client_payload.sponsorship.sponsor.login || github.event.inputs.test_username || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   manage-sponsor:
     runs-on: ubuntu-latest
@@ -43,9 +46,15 @@ jobs:
         with:
           github-token: ${{ secrets.ORG_ADMIN_TOKEN }}
           script: |
-            // Determine source: webhook (repository_dispatch) or manual test (workflow_dispatch)
-            let sponsor, tierName, tierPrice, action;
+            const org = 'AnkleBreaker-Studio';
+            const teamSlug = 'sponsors';
+            const MIN_TIER_PRICE = 15;
+            const PRIORITY_TIER_PRICE = 100;
+            const DISCORD_CHANNEL = '1476975591692435620';
+            const INVITE_URL = 'https://github.com/orgs/AnkleBreaker-Studio/invitation';
+            const CLAIM_URL = 'https://github.com/AnkleBreaker-Studio/premium-mcps/issues/new?template=discord-role-request.yml';
 
+            let sponsor, tierName, tierPrice, action;
             if (context.eventName === 'repository_dispatch') {
               const payload = context.payload.client_payload;
               sponsor = payload.sponsorship.sponsor.login;
@@ -54,18 +63,12 @@ jobs:
               action = payload.action;
               console.log(`Webhook event: ${action} from ${sponsor}`);
             } else {
-              // workflow_dispatch (manual test)
               sponsor = '${{ github.event.inputs.test_username }}';
               tierName = '${{ github.event.inputs.test_tier }}';
               tierPrice = parseInt('${{ github.event.inputs.test_price }}');
               action = '${{ github.event.inputs.test_action }}';
               console.log(`Manual test: ${action} for ${sponsor}`);
             }
-
-            const org = 'AnkleBreaker-Studio';
-            const teamSlug = 'sponsors';
-            const MIN_TIER_PRICE = 15;
-            const DISCORD_CHANNEL = '1476975591692435620';
 
             async function postDiscord(message) {
               try {
@@ -80,47 +83,98 @@ jobs:
                     body: JSON.stringify({ content: message })
                   }
                 );
-                if (!resp.ok) console.error(`Discord error: ${resp.status}`);
-              } catch (e) { console.error(`Discord post failed: ${e.message}`); }
-            }
-
-            if (action === 'created' || action === 'tier_changed') {
-              if (tierPrice >= MIN_TIER_PRICE) {
-                try {
-                  await github.rest.teams.addOrUpdateMembershipForUserInOrg({
-                    org, team_slug: teamSlug, username: sponsor, role: 'member'
-                  });
-                  console.log(`Added ${sponsor} to sponsors team`);
-                } catch (error) {
-                  console.error(`Failed to add ${sponsor}: ${error.message}`);
+                if (!resp.ok) {
+                  console.error(`Discord error ${resp.status}: ${await resp.text()}`);
+                  return false;
                 }
-
-                if (action === 'created') {
-                  if (tierPrice >= 100) {
-                    await postDiscord(
-                      `## \ud83d\udd34 New MCP Priority Support Subscriber!\n\n` +
-                      `**${sponsor}** just joined as an **${tierName}** subscriber! Welcome to the inner circle! \u2764\ufe0f\n\n` +
-                      `Thank you for your incredible support of AnkleBreaker Studio! You now have priority access to our team. \ud83d\ude80\n\n` +
-                      `> Don't forget to claim your **MCP Priority Support** Discord role in the [premium-mcps repo](https://github.com/AnkleBreaker-Studio/premium-mcps)!`
-                    );
-                  } else {
-                    await postDiscord(
-                      `## \ud83c\udf89 New Sponsor!\n\n` +
-                      `**${sponsor}** just joined as a **${tierName}** sponsor! Welcome to the AnkleBreaker Studio family! \u2764\ufe0f\n\n` +
-                      `Thank you for supporting our MCP tools and open-source projects! \ud83d\ude80\n\n` +
-                      `> Don't forget to claim your **Private MCP Sponsor** Discord role in the [premium-mcps repo](https://github.com/AnkleBreaker-Studio/premium-mcps)!`
-                    );
-                  }
-                }
-              } else if (action === 'tier_changed') {
-                try {
-                  await github.rest.teams.removeMembershipForUserInOrg({ org, team_slug: teamSlug, username: sponsor });
-                } catch (error) { console.log(`Note: ${sponsor} may not have been in team`); }
+                return true;
+              } catch (e) {
+                console.error(`Discord post failed: ${e.message}`);
+                return false;
               }
             }
 
-            if (action === 'cancelled' || action === 'pending_cancellation') {
+            async function removeFromTeam(reason) {
               try {
                 await github.rest.teams.removeMembershipForUserInOrg({ org, team_slug: teamSlug, username: sponsor });
-              } catch (error) { console.log(`Note: ${sponsor} may not have been in team`); }
+                console.log(`Removed ${sponsor} from ${teamSlug} (${reason})`);
+              } catch (error) {
+                console.log(`Note: ${sponsor} may not have been in team (${error.message})`);
+              }
+            }
+
+            const HANDLED = ['created', 'tier_changed', 'cancelled', 'pending_cancellation'];
+            if (!HANDLED.includes(action)) {
+              console.log(`No-op: action "${action}" is not handled by this workflow.`);
+              return;
+            }
+
+            if (action === 'cancelled' || action === 'pending_cancellation') {
+              await removeFromTeam(action);
+              return;
+            }
+
+            if (tierPrice < MIN_TIER_PRICE) {
+              if (action === 'tier_changed') {
+                await removeFromTeam(`tier dropped to $${tierPrice}`);
+              } else {
+                console.log(`Ignoring ${action}: $${tierPrice} is below the $${MIN_TIER_PRICE} threshold.`);
+              }
+              return;
+            }
+
+            // addOrUpdateMembershipForUserInOrg returns state "pending" for anyone
+            // who is not already an org member. Pending means NO repo access yet.
+            let membershipState = 'unknown';
+            try {
+              const resp = await github.rest.teams.addOrUpdateMembershipForUserInOrg({
+                org, team_slug: teamSlug, username: sponsor, role: 'member'
+              });
+              membershipState = resp.data.state;
+              console.log(`Team membership for ${sponsor}: ${membershipState}`);
+            } catch (error) {
+              console.error(`Failed to add ${sponsor}: ${error.message}`);
+              await postDiscord(
+                `⚠️ **Sponsor access FAILED** for \`${sponsor}\` (${tierName}, $${tierPrice}/mo).\n` +
+                `Could not add them to the \`${teamSlug}\` team: ${error.message}\n` +
+                `Manual action needed.`
+              );
+              core.setFailed(`Failed to add ${sponsor} to ${teamSlug}: ${error.message}`);
+              return;
+            }
+
+            if (action !== 'created') {
+              console.log(`Tier change processed for ${sponsor}; no announcement sent.`);
+              return;
+            }
+
+            const isPriority = tierPrice >= PRIORITY_TIER_PRICE;
+            const roleLabel = isPriority ? 'MCP Priority Support' : 'Private MCP Sponsor';
+            const header = isPriority
+              ? '## 🔴 New MCP Priority Support Subscriber!'
+              : '## 🎉 New Sponsor!';
+            const welcome = isPriority
+              ? `**${sponsor}** just joined as an **${tierName}** subscriber! Welcome to the inner circle! ❤️`
+              : `**${sponsor}** just joined as a **${tierName}** sponsor! Welcome to the AnkleBreaker Studio family! ❤️`;
+
+            let steps;
+            if (membershipState === 'pending') {
+              steps =
+                `**👉 ${sponsor}, two quick steps to unlock everything:**\n` +
+                `**1.** Accept your GitHub organisation invite → <${INVITE_URL}>\n` +
+                `_Until you accept it, the premium repos show a **404**. That is expected, not a bug._\n` +
+                `**2.** Then claim your **${roleLabel}** Discord role → <${CLAIM_URL}>`;
+            } else {
+              steps =
+                `**👉 ${sponsor}, one step left:**\n` +
+                `Claim your **${roleLabel}** Discord role → <${CLAIM_URL}>`;
+            }
+
+            const sent = await postDiscord(
+              `${header}\n\n${welcome}\n\n` +
+              `Thank you for supporting our MCP tools and open-source projects! 🚀\n\n` +
+              steps
+            );
+            if (!sent) {
+              core.setFailed('Access was granted but the Discord announcement failed to post.');
             }
