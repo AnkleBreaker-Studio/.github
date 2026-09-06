@@ -30,7 +30,7 @@ Our MCP ([Model Context Protocol](https://modelcontextprotocol.io)) servers let 
 | Project | Description | Stars |
 |---------|-------------|:-----:|
 | [**unity-mcp-server**](https://github.com/AnkleBreaker-Studio/unity-mcp-server) | 🎮 **268 tools** — Full AI control over Unity Editor & Unity Hub. Scenes, GameObjects, scripts, builds, animation, physics, lighting, terrain, Shader Graph, Amplify Shader Editor, profiling, NavMesh, MPPM multiplayer, and more. | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/unity-mcp-server?style=flat-square) |
-| [**unity-mcp-plugin**](https://github.com/AnkleBreaker-Studio/unity-mcp-plugin) | 🔌 Unity Editor plugin (UPM) — HTTP bridge that connects your editor to any MCP-compatible AI assistant | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/unity-mcp-plugin?style=flat-square) |
+| [**unity-mcp-plugin**](https://github.com/AnkleBreaker-Studio/unity-mcp-plugin) | ��� Unity Editor plugin (UPM) — HTTP bridge that connects your editor to any MCP-compatible AI assistant | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/unity-mcp-plugin?style=flat-square) |
 
 ### See It In Action
 
@@ -71,14 +71,14 @@ Lightweight, dependency-free Unity packages — ready to drop into any project v
 | [**AnkleBreaker-Core**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Core) | Core foundation — base classes, interfaces, delegates, script templates | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Core?style=flat-square) |
 | [**Utils-Inspector**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Utils-Inspector) | **Free Odin alternative** — 40+ custom attributes: ShowIf, BoxGroup, TabGroup, Button, Required, ProgressBar, PreviewField, TableList | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Utils-Inspector?style=flat-square) |
 | [**Utils-Extensions**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Utils-Extensions) | 50+ C# extension methods for Unity types (Transform, GameObject, Color, List, Dictionary, String…) | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Utils-Extensions?style=flat-square) |
-| [**Utils-UniversalTypes**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Utils-UniversalTypes) | Universal wrappers — UniversalString (I2L + Unity Localization), UniversalAsset (Direct + Addressables), UniversalSound (AudioClip + Wwise + FMOD) | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Utils-UniversalTypes?style=flat-square) |
+| [**Utils-UniversalTypes**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Utils-UniversalTypes) | Universal wrappers ��� UniversalString (I2L + Unity Localization), UniversalAsset (Direct + Addressables), UniversalSound (AudioClip + Wwise + FMOD) | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Utils-UniversalTypes?style=flat-square) |
 | [**Utils-Editor**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-Utils-Editor) | Editor utilities — custom Gizmos, MonoScript finder, dialog windows | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-Utils-Editor?style=flat-square) |
 | [**FishNet-Core**](https://github.com/AnkleBreaker-Studio/AnkleBreaker-FishNet-Core) | FishNet networking layer — AnkleBreakerNetworkBehaviour with auto event lifecycle, ownership tracking, prefab selector | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/AnkleBreaker-FishNet-Core?style=flat-square) |
 | [**Facepunch.Steamworks**](https://github.com/AnkleBreaker-Studio/Facepunch.Steamworks) | C# Steamworks with GameServer support — fork with missing dedicated server features | ![Stars](https://img.shields.io/github/stars/AnkleBreaker-Studio/Facepunch.Steamworks?style=flat-square) |
 
 ---
 
-## 🔒 Premium MCP Servers — Sponsor-Only
+## 🔒 Premium MCP Servers ��� Sponsor-Only
 
 Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** available exclusively to [GitHub Sponsors](https://github.com/sponsors/AnkleBreaker-Studio). Each one turns hours of manual work into a single AI command.
 
@@ -86,11 +86,11 @@ Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** av
 |------------|--------------|
 | **Discord MCP** | Comprehensive Discord automation — manage servers, channels, messages, roles, threads, webhooks, and more |
 | **Jira MCP** | 47+ tools — issues, sprints, boards, transitions, bulk ops, comments, worklogs, and full project management |
-| **Git & GitHub MCP** | Full Git and GitHub capabilities — repos, PRs, branches, issues, actions, releases, code search |
+| **Git & GitHub MCP** | Full Git and GitHub capabilities �� repos, PRs, branches, issues, actions, releases, code search |
 | **Blender MCP** | Full Blender integration — meshes, materials, modifiers, animation, rendering, import/export |
 | **Plastic SCM MCP** | Plastic SCM / Unity Version Control — branches, merges, shelves, workspaces, code reviews, locks |
 | **Playwright MCP** | Browser automation and QA testing — navigate, click, fill forms, screenshot, assert, multi-tab |
-| 🔜 **More coming…** | New MCPs ship regularly — sponsors get instant access as the collection grows |
+| 🔜 **More coming���** | New MCPs ship regularly — sponsors get instant access as the collection grows |
 
 > **Have an idea for an MCP?** [Join our Discord](https://discord.gg/jrgNeUn6Ft) and tell us what tool you want AI to control next!
 
@@ -101,7 +101,7 @@ Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** av
 | Tier | Price | What You Get |
 |------|-------|--------------|
 | **Supporter** | $5/mo | Support the project + sponsor badge |
-| **Backer** | $15/mo | 🔑 Access to **all premium MCPs** + 🥇 gold Discord role + priority issue responses |
+| **Backer** | $15/mo | ��� Access to **all premium MCPs** + 🥇 gold Discord role + priority issue responses |
 | **MCP Priority Support** | $100/mo | Everything above + 🔴 red Discord role + direct team support + early access to new MCPs + custom config assistance |
 
 <div align="center">
@@ -109,6 +109,22 @@ Beyond Unity MCP, we maintain a **growing collection of premium MCP servers** av
 [![Sponsor AnkleBreaker Studio](https://img.shields.io/badge/Sponsor_Us-💛_GitHub_Sponsors-ea4aaa?style=for-the-badge&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/AnkleBreaker-Studio)
 
 </div>
+
+---
+
+## 🔑 Just Sponsored? Two Steps to Get Your Access
+
+Access is automated, but it needs **two** actions from you:
+
+**1. Accept the GitHub organisation invite** → [github.com/orgs/AnkleBreaker-Studio/invitation](https://github.com/orgs/AnkleBreaker-Studio/invitation)
+
+> Until you accept it, every premium repo shows a **404**. That is GitHub hiding private repos from non-members, not a broken link. The invite also lands in your GitHub notifications and your email.
+
+**2. Claim your Discord role** → [open a role request](https://github.com/AnkleBreaker-Studio/premium-mcps/issues/new?template=discord-role-request.yml) with your Discord User ID
+
+> To find your ID: Discord Settings → Advanced → enable **Developer Mode**, then right-click your username → **Copy User ID**. The role is assigned within minutes.
+
+Stuck on either step? Ask in **#mcp-help** on [our Discord](https://discord.gg/jrgNeUn6Ft) or email [contact@anklebreaker-studio.com](mailto:contact@anklebreaker-studio.com) and we'll sort it out by hand.
 
 ---
 
