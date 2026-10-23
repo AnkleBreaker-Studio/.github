@@ -23,6 +23,16 @@ Our MCP ([Model Context Protocol](https://modelcontextprotocol.io)) servers let 
 
 ---
 
+## 🌌 Nodary: linked documents for teams and their AI agents
+
+[**Nodary**](https://nodary.ai) is our AI-native workspace where a team's documents link instead of piling up: specs, wikis, sheets, diagrams, boards and reviews on one map. Claude, ChatGPT, Cursor and other MCP clients read and write it through a remote MCP server at `https://nodary.ai/api/mcp`, included in every plan, Free included within its limits. We build it and use it every day on our own games, and nothing in it requires a game.
+
+| Project | Description |
+|---------|-------------|
+| [**nodary-mcp**](https://github.com/AnkleBreaker-Studio/nodary-mcp) | Setup for Claude, ChatGPT, Cursor, Claude Code and VS Code, the tool list, limits and registry metadata for Nodary's hosted MCP server |
+
+---
+
 ## 🎮 Unity MCP — Our Flagship Open-Source Project
 
 > **The most comprehensive MCP integration for Unity game development. 268 tools. 30+ categories. Free forever.**
